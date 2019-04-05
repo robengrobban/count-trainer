@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<title>Talräknar tränare</title>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="stil.css">
+		<script type="text/javascript" src="script.js"></script>
 	</head>
-	<body>
+	<body onload="createEq(); displayEq();">
+
+		<div id="tal-container">
+			<img src="success-check.svg" id="success">
+			<button onclick="createEq(); displayEq();">Ny ekvation</button>
+			<span id="to-calculate"></span>
+			<input type="number" id="answer" oninput="checkEq(this.value);">
+		</div>
+
+		<div id="inst-container">
+
+			<div class="inst-rad">
+				<label>Högsta tal: <span id="display-high-num">10</span></label>
+				<input min="1" max="100" type="range" name="high-num" value="10" oninput="document.getElementById('display-high-num').innerHTML = this.value; range = parseInt(this.value); createEq(); displayEq();">
+			</div>
+
+			<div class="inst-rad">
+				<label>Max tal <span id="display-max-num">5</span></label>
+				<input min="1" max="10" type="range" name="max-num" value="5" oninput="document.getElementById('display-max-num').innerHTML = this.value; amount = parseInt(this.value); createEq(); displayEq();">
+			</div>
+
+			<div class="inst-rad">
+				<label>Multiplikation</label>
+				<input type="checkbox" name="max-num" checked oninput="multiply = this.checked; createEq(); displayEq();">
+			</div>
+
+		</div>
 
 	</body>
 </html>
