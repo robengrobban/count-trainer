@@ -1,7 +1,7 @@
 //Instansvariabler
 var range = 10;
 var amount = 5;
-var multiply = true;
+var multiply = false;
 var arithmetic = ['+','-','*'];
 var currentEq = "";
 
