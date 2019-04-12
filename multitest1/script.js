@@ -23,7 +23,7 @@ var wrongTop = 0;
 var correctBot = 0;
 var wrongBot = 0;
 
-var time = 5*1;
+var time = 5*60;
 var bilderR = ["square.png", "triangleR.png", "six.png", "romb.png", "circle.png"];
 var bilderL = ["square.png", "triangleL.png", "six.png", "romb.png", "circle.png"];
 
