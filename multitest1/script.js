@@ -133,7 +133,7 @@ function isWrong(dom) {
 }
 function move() {
 	var dom = $("#flag");
-	dom.animate({top:"0"}, 12000, "linear");
+	dom.animate({top:"0"}, 5000, "linear");
 }
 function chooseRight() {
 	guess = "r";
