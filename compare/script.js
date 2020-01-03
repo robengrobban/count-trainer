@@ -92,7 +92,7 @@ function makeLetters() {
 		}
 		res = newRes;
 	}
-	else if ( Math.floor(Math.random() * 2) == 0 ) {
+	else if ( Math.floor(Math.random() * 3) == 0 ) {
 		var newRes = "";
 		for ( var i = 0; i < res.length; i++ ) {
 			if ( Math.floor(Math.random() * 2) == 0 && res.charAt(i) == 'S' ) {
@@ -115,6 +115,26 @@ function makeLetters() {
 	}
 	
 	if ( Math.floor(Math.random() * 2) == 0 ) {
+
+		var swapIndex = Math.floor(Math.random() * res.length);
+
+		var newRes = "";
+
+		for ( var i = 0; i < res.length; i++ ) {
+			if ( i == swapIndex ) {
+				newRes += res.charAt(i+1);
+				newRes += res.charAt(i);
+				i++;
+			}
+			else {
+				newRes += res.charAt(i);
+			}
+		}
+
+		res = newRes;
+
+	}
+	else if ( Math.floor(Math.random() * 3) == 0 ) {
 
 		var swapIndex = Math.floor(Math.random() * res.length);
 
