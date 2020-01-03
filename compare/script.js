@@ -52,7 +52,7 @@ function startTimer() {
 
 }
 
-var spotLength = 30;
+var spotLength = 4;
 
 var attempts = [];
 
