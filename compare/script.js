@@ -40,7 +40,7 @@ setInterval(function(){
 
 function startTimer() {
 
-	secondsLeft = 0.1 * 60;
+	secondsLeft = 3 * 60;
 
 	$("#start").css("display", "none");
 	$("#compare-container").css("display", "block");
