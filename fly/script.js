@@ -50,7 +50,7 @@ var randForce = 0.5;
 
 function start() {
 
-	secondsLeft = 0.5 * 60;
+	secondsLeft = 3 * 60;
 
 	$("#start").css("display", "none");
 	$("#main-container").css("display", "block");
