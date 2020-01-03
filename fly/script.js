@@ -9,12 +9,26 @@ setInterval(function(){
 	}
 
 }, 1000);
+setInterval(function(){ 
+
+	var curr = parseInt($("#pointer").css("left"));
+	var width = parseInt($("#path").width());
+	var pos = (curr / width) * 100 + (forceRight - forceLeft);
+
+	console.log(curr);
+	console.log(width);
+	console.log(pos);
+
+	$("#pointer").css( "left", pos + "%" );
+
+}, 100);
 
 var attempts = [];
 var lastNumber;
 var currentNumber;
 
-var keyForce;
+var forceLeft = 0;
+var forceRight = 0;
 
 function startTimer() {
 
@@ -26,23 +40,31 @@ function startTimer() {
 
 	attempts = [];
 
-	
 
 }
 
 
 
-$(document).keypress(function(event){
-	var keycode = (event.keyCode ? event.keyCode : event.which);
-	console.log(keycode);
+$(document).keydown(function(e){
 
-	if ( keycode == "37" ) {
-		//Vänster
-		keyForce = 1;
+	if ( e.keyCode == 37 ) {
+		forceLeft = 1;
 	}
-	else if ( keycode == "39" ) {
-		//Höger
-		keyForce = -1;
+
+	if ( e.keyCode == 39 ) {
+		forceRight = 1;
+	}
+
+});
+
+$(document).keyup(function(e){
+
+	if ( e.keyCode == 37 ) {
+		forceLeft = 0;
+	}
+
+	if ( e.keyCode == 39 ) {
+		forceRight = 0;
 	}
 
 });
