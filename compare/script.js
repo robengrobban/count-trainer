@@ -52,6 +52,8 @@ function startTimer() {
 
 }
 
+var spotLength = 4;
+
 var attempts = [];
 
 var spotOne = "";
@@ -62,7 +64,7 @@ function makeLetters() {
 	var res = "";
 	var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-	for ( var i = 0; i < 7; i++) {
+	for ( var i = 0; i < spotLength; i++) {
 		res += characters.charAt(Math.floor(Math.random() * characters.length));
 	}
 
@@ -167,11 +169,15 @@ function decision( lika ) {
 	if ( lika == (spotOne == spotTwo) ) {
 
 		correct = true;
+		spotLength++;
 
 	}
 	else {
 
 		correct = false;
+		if ( spotLength >= 4 ) {
+			spotLength--;
+		}
 
 	}
 
