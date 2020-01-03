@@ -91,6 +91,48 @@ function makeLetters() {
 		res = newRes;
 	}
 	else if ( Math.floor(Math.random() * 2) == 0 ) {
+		var newRes = "";
+		for ( var i = 0; i < res.length; i++ ) {
+			if ( Math.floor(Math.random() * 2) == 0 && res.charAt(i) == 'S' ) {
+				newRes += "5";
+			}
+			else if ( Math.floor(Math.random() * 2) == 0 && res.charAt(i) == 'E' ) {
+				newRes += "3";
+			}
+			else if ( Math.floor(Math.random() * 2) == 0 && res.charAt(i) == 'I' ) {
+				newRes += "1";
+			}
+			else if ( Math.floor(Math.random() * 2) == 0 && res.charAt(i) == 'O' ) {
+				newRes += "0";
+			}
+			else {
+				newRes += res.charAt(i);
+			}
+		}
+		res = newRes;
+	}
+	
+	if ( Math.floor(Math.random() * 2) == 0 ) {
+
+		var swapIndex = Math.floor(Math.random() * res.length);
+
+		var newRes = "";
+
+		for ( var i = 0; i < res.length; i++ ) {
+			if ( i == swapIndex ) {
+				newRes += res.charAt(i+1);
+				newRes += res.charAt(i);
+				i++;
+			}
+			else {
+				newRes += res.charAt(i);
+			}
+		}
+
+		res = newRes;
+
+	}
+	else if ( Math.floor(Math.random() * 2) == 0 ) {
 
 		var swapIndex = Math.floor(Math.random() * res.length);
 

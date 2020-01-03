@@ -11,6 +11,8 @@ setInterval(function(){
 }, 1000);
 
 var attempts = [];
+var lastNumber;
+var currentNumber;
 
 function startTimer() {
 
@@ -22,6 +24,9 @@ function startTimer() {
 
 	attempts = [];
 
-	makeLetters();
+	
 
 }
+
+
+
