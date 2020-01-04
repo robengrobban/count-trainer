@@ -144,7 +144,7 @@ function generateNumber() {
 		$("#container-numbers button").attr("disabled", true);
 		$("#target-number span").text("-");
 
-	},3000);
+	},3500);
 
 	setTimeout(function(){
 
