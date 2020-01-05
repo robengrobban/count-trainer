@@ -8,13 +8,19 @@ setInterval(function(){
 		stop();
 	}
 
+	$("#timer-container").text(secondsLeft);
+
 }, 1000);
 setInterval(function(){ 
 
 	if ( shouldMove ) {
 		var curr = parseInt($("#pointer").css("left"));
 		var width = parseInt($("#path").width());
-		var pos = (curr / width) * 100 + (forceRight - forceLeft) + randForce;
+		var pos = (curr / width) * 100 + (forceRight - forceLeft);
+
+		if ( moveRandForce ) {
+			pos += randForce
+		}		
 
 		if ( pos >= 100 ) {
 			pos = 99.9;
@@ -29,13 +35,23 @@ setInterval(function(){
 }, 100);
 setInterval(function(){ 
 
-	var rand = Math.random() * 2 - 1;
-	while ( rand == 0 ) {
-		rand = Math.random() * 2 - 1;
-	}
-	randForce = rand;
+	var choose = Math.floor(Math.random() * 7);
+	var rand = Math.random() - Math.random();
 
-}, 10000);
+	if ( choose == 0 ) {
+		rand *= 2;
+	}
+	else if ( choose == 1 || choose == 2 ) {
+		rand *= 1.5;
+	}
+	else if ( choose == 3 ) {
+		rand *= 0.5;
+	}
+	
+	randForce = rand;
+	console.log(randForce);
+
+}, 5000);
 
 var shouldMove = false;
 var playing = false;
@@ -46,7 +62,8 @@ var currentNumber = 0;
 
 var forceLeft = 0;
 var forceRight = 0;
-var randForce = 0.5;
+var randForce = Math.random() - Math.random();
+var moveRandForce = true;
 
 function start() {
 
@@ -55,6 +72,7 @@ function start() {
 	$("#start").css("display", "none");
 	$("#main-container").css("display", "block");
 	$("#score-container").css("display", "none");
+	$("#timer-container").css("display", "block");
 
 	$("#pointer").css( "left", "50%" );
 
@@ -76,6 +94,7 @@ function stop() {
 	$("#start").css("display", "block");
 	$("#main-container").css("display", "none");
 	$("#score-container").css("display", "block");
+	$("#timer-container").css("display", "none");
 
 	var correct = 0;
 		var wrong = 0;
@@ -161,10 +180,12 @@ $(document).keydown(function(e){
 
 	if ( e.keyCode == 37 ) {
 		forceLeft = 1;
+		moveRandForce = false;
 	}
 
 	if ( e.keyCode == 39 ) {
 		forceRight = 1;
+		moveRandForce = false;
 	}
 
 });
@@ -173,10 +194,12 @@ $(document).keyup(function(e){
 
 	if ( e.keyCode == 37 ) {
 		forceLeft = 0;
+		moveRandForce = true;
 	}
 
 	if ( e.keyCode == 39 ) {
 		forceRight = 0;
+		moveRandForce = true;
 	}
 
 });
