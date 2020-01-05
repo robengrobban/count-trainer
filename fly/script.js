@@ -16,7 +16,7 @@ setInterval(function(){
 	if ( shouldMove ) {
 		var curr = parseInt($("#pointer").css("left"));
 		var width = parseInt($("#path").width());
-		var pos = (curr / width) * 100 + (forceRight - forceLeft);
+		pos = (curr / width) * 100 + (forceRight - forceLeft);
 
 		if ( moveRandForce ) {
 			pos += randForce
@@ -38,7 +38,10 @@ setInterval(function(){
 	var choose = Math.floor(Math.random() * 7);
 	var rand = Math.random() - Math.random();
 
-	if ( choose == 0 ) {
+	if ( (choose == 0 || choose == 1 || choose == 2 || choose == 3) && (pos >= 48 && pos <= 52)) {
+		rand *= 3;
+	}
+	else if ( choose == 0 ) {
 		rand *= 2;
 	}
 	else if ( choose == 1 || choose == 2 ) {
@@ -53,6 +56,7 @@ setInterval(function(){
 
 }, 5000);
 
+var pos = 50;
 var shouldMove = false;
 var playing = false;
 
