@@ -179,12 +179,12 @@ function generateNumber() {
 $(document).keydown(function(e){
 
 	if ( e.keyCode == 37 ) {
-		forceLeft = 1;
+		forceLeft = 0.5;
 		moveRandForce = false;
 	}
 
 	if ( e.keyCode == 39 ) {
-		forceRight = 1;
+		forceRight = 0.5;
 		moveRandForce = false;
 	}
 
