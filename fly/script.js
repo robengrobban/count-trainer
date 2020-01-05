@@ -163,7 +163,7 @@ function generateNumber() {
 		$("#container-numbers button").attr("disabled", true);
 		$("#target-number span").text("-");
 
-	},3500);
+	},2500);
 
 	setTimeout(function(){
 
@@ -171,7 +171,7 @@ function generateNumber() {
 			generateNumber();
 		}
 
-	},3500);
+	},2500);
 
 }
 
