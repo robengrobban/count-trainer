@@ -11,6 +11,7 @@ setInterval(function(){
 		$("#start").css("display", "block");
 		$("#score-container").css("display", "block");
 		$("#compare-container").css("display", "none");
+		$("#option-container").css("display", "block");
 
 		var correct = 0;
 		var wrong = 0;
@@ -45,13 +46,24 @@ function startTimer() {
 	$("#start").css("display", "none");
 	$("#compare-container").css("display", "block");
 	$("#score-container").css("display", "none");
+	$("#option-container").css("display", "none");
 
 	attempts = [];
 
-	makeLetters();
+	constantLength = document.getElementById("constant-length").checked;
+	if ( constantLength ) {
+		spotLength = 7;
+	}
+	else {
+		spotLength = 4;
+	}
 
+
+	makeLetters();
+	
 }
 
+var constantLength = false;
 var spotLength = 4;
 
 var attempts = [];
@@ -169,13 +181,15 @@ function decision( lika ) {
 	if ( lika == (spotOne == spotTwo) ) {
 
 		correct = true;
-		spotLength++;
+		if ( !constantLength ) {
+			spotLength++;
+		}
 
 	}
 	else {
 
 		correct = false;
-		if ( spotLength >= 4 ) {
+		if ( !constantLength && spotLength >= 4 ) {
 			spotLength--;
 		}
 
