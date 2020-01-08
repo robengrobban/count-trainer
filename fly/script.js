@@ -52,7 +52,7 @@ setInterval(function(){
 	}
 	
 	randForce = rand;
-	console.log(randForce);
+	
 
 }, 5000);
 
@@ -68,6 +68,9 @@ var forceLeft = 0;
 var forceRight = 0;
 var randForce = Math.random() - Math.random();
 var moveRandForce = true;
+
+var timer;
+var setnum;
 
 function start() {
 
@@ -125,10 +128,10 @@ function stop() {
 }
 
 
-function guess( num ) {
+function guess( guessnum ) {
 	var correct;
 
-	if ( num == lastNumber ) {
+	if ( guessnum == lastNumber ) {
 		correct = true;
 	}
 	else {
@@ -137,46 +140,49 @@ function guess( num ) {
 
 	var obj = {
 		correct: correct,
-		guess: num,
+		guess: guessnum,
 		was: lastNumber
 	}
 
 	attempts.push(obj);
 	$("#container-numbers button").attr("disabled", true);
 
+	clearTimeout(timer);
+	setNewNumberRound();
+
 
 }
 
 
 function generateNumber() {
-	var num = Math.floor(Math.random() * 3) + 1;
+	setnum = Math.floor(Math.random() * 3) + 1;
 
-	while ( num == lastNumber ) {
-		num = Math.floor(Math.random() * 3) + 1;
+	while ( setnum == lastNumber ) {
+		setnum = Math.floor(Math.random() * 3) + 1;
 	}
 
-	$("#target-number span").text(num);
+	$("#target-number span").text(setnum);
 
-	if ( num != 0 ) {
+	if ( setnum != 0 ) {
 		$("#container-numbers button").attr("disabled", false);
 	}
 
-	setTimeout(function(){
+	timer = setTimeout(function(){
 
-		lastNumber = num;
-		$("#container-numbers button").attr("disabled", true);
-		$("#target-number span").text("-");
+		setNewNumberRound();
 
 	},2500);
 
-	setTimeout(function(){
+}
 
-		if ( playing ) {
-			generateNumber();
-		}
+function setNewNumberRound() {
+	lastNumber = setnum;
+	$("#container-numbers button").attr("disabled", true);
+	$("#target-number span").text("-");
 
-	},2500);
-
+	if ( playing ) {
+		generateNumber();
+	}
 }
 
 
