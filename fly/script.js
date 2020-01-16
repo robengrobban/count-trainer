@@ -157,9 +157,11 @@ function guess( guessnum ) {
 function generateNumber() {
 	setnum = Math.floor(Math.random() * 3) + 1;
 
+	/* //Den här koden ser till att det inte kan bli samma siffra som förut
 	while ( setnum == lastNumber ) {
 		setnum = Math.floor(Math.random() * 3) + 1;
 	}
+	*/
 
 	$("#target-number span").text(setnum);
 
